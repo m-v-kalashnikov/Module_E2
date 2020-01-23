@@ -1,0 +1,43 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+            <h1>Заполните поля</h1>
+			<form action="" method="POST">
+				{% csrf_token %}
+
+                {{ form.non_field_errors }}
+                <div class="col-12 mt-3">
+                    {{ form.subject.errors }}
+                    <label for="{{ form.subject.id_for_label }}">Тема:</label>
+                    {{ form.subject }}
+                </div>
+                <div class="col-12 mt-3">
+                    {{ form.message.errors }}
+                    <label for="{{ form.message.id_for_label }}">Ваше сообщение:</label>
+                    {{ form.message }}
+                </div>
+                <div class="col-12 mb-3">
+                    {{ form.seconds.errors }}
+                    <label for="{{ form.seconds.id_for_label }}">Через сколько секунд?</label>
+                    {{ form.seconds }}
+                </div>
+                <div class="col-12 mb-3">
+                    {{ form.to_whom.errors }}
+                    <label for="{{ form.to_whom.id_for_label }}">Email кому отправлять?</label>
+                    {{ form.to_whom }}
+                </div>
+                <div class="col-12 mt-3">
+				    <input class="btn btn-primary btn-lg btn-block" type="submit" name="Добавить">
+                </div>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

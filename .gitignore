@@ -1,0 +1,8 @@
+Include
+Lib/
+__pycache__/
+.idea/
+db.sqlite3
+Модуль_E2/__pycache__/
+Scripts/
+Emailer/__pycache__/

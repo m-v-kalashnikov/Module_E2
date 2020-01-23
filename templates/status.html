@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Последние десять писем</h5>
+			  	</div>
+			  	<div class="card-body">
+
+                    <ol>
+                        {% for email in last_ten %}
+                            <li>
+                                <p class="text-left">Тема: {{ email.subject }}</p>
+                                <p class="text-left">Сообщение: {{ email.message }}</p>
+                                <p class="text-left">Кому: {{ email.to_whom }}</p>
+                            </li>
+                            <hr>
+                        {% endfor %}
+                    </ol>
+
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Те, что должны отправиться в будущем</h5>
+			  	</div>
+			  	<div class="card-body">
+                    <ol>
+                        {% for email in must_be_sent %}
+                            <li>
+                                <p class="text-left">Тема: {{ email.subject }}</p>
+                                <p class="text-left">Сообщение: {{ email.message }}</p>
+                                <p class="text-left">Кому: {{ email.to_whom }}</p>
+                            </li>
+                            <hr>
+                        {% endfor %}
+                    </ol>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Отправленные</h5>
+			  	</div>
+			  	<div class="card-body">
+
+                    <ol>
+                        {% for email in already_sent %}
+                            <li>
+                                <p class="text-left">Тема: {{ email.subject }}</p>
+                                <p class="text-left">Сообщение: {{ email.message }}</p>
+                                <p class="text-left">Кому: {{ email.to_whom }}</p>
+                            </li>
+                            <hr>
+                        {% endfor %}
+                    </ol>
+
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
