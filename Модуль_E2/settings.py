@@ -3,7 +3,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '16l57j*x+oc+&!to4p3bmr!7@hup6u2bh_fr7+u85z&cr2pb0-')
 
 DEBUG = False
 
@@ -86,7 +86,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static/staticfiles/')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
