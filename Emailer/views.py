@@ -34,7 +34,7 @@ def index(request):
             Email.objects.create(datetime_created=now,
                                  subject=subject,
                                  message=message,
-                                 seconds=now+datetime.timedelta(seconds=seconds),
+                                 seconds=now+datetime.timedelta(seconds=float(seconds)),
                                  to_whom=to_whom
                                  )
 
@@ -49,11 +49,11 @@ def index(request):
 def detail_page(request):
     email_queryset = Email.objects.all()
 
-    last_ten = email_queryset #.order_by('datetime_created')[9]
+    last_ten = email_queryset.order_by('datetime_created')[9]
 
     must_be_sent = email_queryset.filter(seconds__gt=datetime.datetime.now())
 
-    already_sent = email_queryset
+    already_sent = email_queryset.filter(seconds__lt=datetime.datetime.now())
 
     context = {'last_ten': last_ten, 'must_be_sent': must_be_sent, 'already_sent': already_sent}
 
