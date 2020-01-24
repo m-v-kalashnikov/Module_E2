@@ -22,15 +22,14 @@ def index(request):
             message = form.cleaned_data['message']
             sender = os.environ.get('Email_user')
             to_whom = form.cleaned_data['to_whom']
-            seconds = form.cleaned_data['seconds']
+            seconds = float(form.cleaned_data['seconds'])
 
             recipients = []
             if to_whom:
                 recipients.append(to_whom)
 
-            t = threading.Timer(float(seconds), function=send_mail, args=(subject, message, sender, recipients))
+            t = threading.Timer(seconds, function=send_mail, args=(subject, message, sender, recipients))
 
-            # now = datetime.datetime.now()
             now = timezone.now()
 
             Email.objects.create(datetime_created=now,
