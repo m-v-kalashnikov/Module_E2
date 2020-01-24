@@ -2,11 +2,11 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '16l57j*x+oc+&!to4p3bmr!7@hup6u2bh_fr7+u85z&cr2pb0-')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://kalashnikovs-emailer.herokuapp.com/']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
