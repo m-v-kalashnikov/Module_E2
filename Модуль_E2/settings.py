@@ -6,7 +6,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://kalashnikovs-emailer.herokuapp.com/']
+ALLOWED_HOSTS = ['kalashnikovs-emailer.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
