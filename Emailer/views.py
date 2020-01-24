@@ -28,7 +28,7 @@ def index(request):
             if to_whom:
                 recipients.append(to_whom)
 
-            t = threading.Timer(seconds, function=send_mail, args=(subject, message, sender, recipients))
+            t = threading.Timer(float(seconds), function=send_mail, args=(subject, message, sender, recipients))
 
             now = timezone.now()
 
