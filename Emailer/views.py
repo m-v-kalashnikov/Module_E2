@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.urls import reverse
+from django.utils import timezone
 
 from .forms import EmailerForm
 import threading
@@ -29,12 +30,13 @@ def index(request):
 
             t = threading.Timer(float(seconds), function=send_mail, args=(subject, message, sender, recipients))
 
-            now = datetime.datetime.now()
+            # now = datetime.datetime.now()
+            now = timezone.now()
 
             Email.objects.create(datetime_created=now,
                                  subject=subject,
                                  message=message,
-                                 seconds=now+datetime.timedelta(seconds=float(seconds)),
+                                 seconds=now+timezone.timedelta(seconds=seconds),
                                  to_whom=to_whom
                                  )
 
@@ -47,13 +49,11 @@ def index(request):
 
 
 def detail_page(request):
-    email_queryset = Email.objects.all()
+    last_ten = Email.objects.all().order_by('-id')[:10]
 
-    last_ten = email_queryset.order_by('datetime_created')[:9]
+    must_be_sent = Email.objects.all().filter(seconds__gt=timezone.now()).order_by('-id')
 
-    must_be_sent = email_queryset.filter(seconds__gt=datetime.datetime.now())
-
-    already_sent = email_queryset.filter(seconds__lt=datetime.datetime.now())
+    already_sent = Email.objects.all().filter(seconds__lt=timezone.now()).order_by('-id')
 
     context = {'last_ten': last_ten, 'must_be_sent': must_be_sent, 'already_sent': already_sent}
 
