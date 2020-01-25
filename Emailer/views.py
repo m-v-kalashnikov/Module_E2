@@ -35,7 +35,7 @@ def index(request):
             Email.objects.create(datetime_created=now,
                                  subject=subject,
                                  message=message,
-                                 seconds=now + timezone.timedelta(seconds=seconds),
+                                 seconds=now + seconds,
                                  to_whom=to_whom
                                  )
 
