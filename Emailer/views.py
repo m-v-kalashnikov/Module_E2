@@ -32,10 +32,10 @@ def index(request):
 
             now = timezone.now()
 
-            Email.objects.create(datetime_created=now,
+            Email.objects.create(datetime_created=timezone.now(),
                                  subject=subject,
                                  message=message,
-                                 seconds=now + timezone.timedelta(seconds=15),
+                                 seconds=timezone.now() + timezone.timedelta(seconds=15),
                                  # seconds=now + timezone.timedelta(seconds=seconds),
                                  to_whom=to_whom
                                  )
