@@ -7,7 +7,7 @@ class Email(models.Model):
     message = models.CharField('Сообщение', max_length=500)
     seconds = models.PositiveIntegerField('Когда отправлять')
     to_whom = models.EmailField('Кому отправлять')
-    datetime_must_be_send = models.DateTimeField('Дата и время отправки', blank=True)
+    datetime_must_be_send = models.DateTimeField('Дата и время отправки',null=True, blank=True)
 
     class Meta:
         verbose_name = 'Електронное письмо'
