@@ -53,9 +53,9 @@ def index(request):
 def detail_page(request):
     last_ten = Email.objects.all().order_by('-id')[:10]
 
-    must_be_sent = Email.objects.all().filter(seconds__gt=timezone.now()).order_by('-id')
+    must_be_sent = Email.objects.all()# .filter(seconds__gt=timezone.now()).order_by('-id')
 
-    already_sent = Email.objects.all().filter(seconds__lt=timezone.now()).order_by('-id')
+    already_sent = Email.objects.all()# .filter(seconds__lt=timezone.now()).order_by('-id')
 
     context = {'last_ten': last_ten, 'must_be_sent': must_be_sent, 'already_sent': already_sent}
 
