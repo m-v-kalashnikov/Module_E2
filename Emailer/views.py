@@ -30,11 +30,7 @@ def index(request):
             if to_whom:
                 recipients.append(to_whom)
 
-            # t = threading.Timer(seconds, function=send_mail, args=(subject, message, sender, recipients))
-
-            # now = timezone.now()
-            # then = now + timezone.timedelta(seconds=seconds_)
-            # now = datetime.datetime.now()
+            t = threading.Timer(float(seconds), function=send_mail, args=(subject, message, sender, recipients))
 
             Email.objects.create(subject=subject,
                                  message=message,
@@ -42,7 +38,7 @@ def index(request):
                                  to_whom=to_whom
                                  )
 
-            # t.start()
+            t.start()
             return HttpResponseRedirect(reverse('Emailer:detail'))
     else:
         form = EmailerForm()
