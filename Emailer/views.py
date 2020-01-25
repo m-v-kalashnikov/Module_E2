@@ -51,7 +51,7 @@ def detail_page(request):
 
     must_be_sent = Email.objects.all().filter(datetime_must_be_send__gt=timezone.now()).order_by('-id')
 
-    already_sent = Email.objects.all().filter(datetime_must_be_send__lt=timezone.now()).order_by('-id')
+    already_sent = Email.objects.all().filter(datetime_must_be_send__lt=timezone.now()).order_by('-datetime_must_be_send')
 
     context = {'last_ten': last_ten, 'must_be_sent': must_be_sent, 'already_sent': already_sent}
 
