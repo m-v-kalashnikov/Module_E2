@@ -1,4 +1,5 @@
 import datetime
+
 import os
 
 from django.http import HttpResponseRedirect
@@ -32,7 +33,7 @@ def index(request):
 
             # now = timezone.now()
             # then = now + timezone.timedelta(seconds=seconds_)
-             now = datetime.now()
+            now = datetime.datetime.now()
 
             Email.objects.create(datetime_created=now,
                                  subject=subject,
