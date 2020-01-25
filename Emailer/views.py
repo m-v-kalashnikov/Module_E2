@@ -35,7 +35,7 @@ def index(request):
             Email.objects.create(datetime_created=now,
                                  subject=subject,
                                  message=message,
-                                 seconds=now + timezone.timedelta(seconds=15,
+                                 seconds=now + timezone.timedelta(seconds=15),
                                  # seconds=now + timezone.timedelta(seconds=seconds),
                                  to_whom=to_whom
                                  )
@@ -58,3 +58,10 @@ def detail_page(request):
     context = {'last_ten': last_ten, 'must_be_sent': must_be_sent, 'already_sent': already_sent}
 
     return render(request, 'detail.html', context)
+
+
+# git add .
+# git commit -m "initial commit"
+# git push heroku master
+# heroku open
+#
