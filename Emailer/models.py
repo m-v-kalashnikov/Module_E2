@@ -22,4 +22,4 @@ class Email(models.Model):
 
         if not self.id:
             self.datetime_must_be_send = self.datetime_created + sec
-            super(MyModel, self).save()
+            super(Email, self).save()
