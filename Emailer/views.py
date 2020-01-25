@@ -21,9 +21,10 @@ def index(request):
         if form.is_valid():
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
-            sender = os.environ.get('Email_user')
+            seconds = form.cleaned_data['seconds']
             to_whom = form.cleaned_data['to_whom']
-            seconds_ = form.cleaned_data['seconds']
+
+            sender = os.environ.get('Email_user')
 
             recipients = []
             if to_whom:
@@ -33,13 +34,11 @@ def index(request):
 
             # now = timezone.now()
             # then = now + timezone.timedelta(seconds=seconds_)
-            now = datetime.datetime.now()
+            # now = datetime.datetime.now()
 
-            Email.objects.create(datetime_created=now,
-                                 subject=subject,
+            Email.objects.create(subject=subject,
                                  message=message,
-                                 seconds=now,
-                                 # seconds=now + timezone.timedelta(seconds=seconds),
+                                 seconds=seconds,
                                  to_whom=to_whom
                                  )
 
