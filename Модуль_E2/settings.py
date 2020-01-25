@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-DEBUG = 'DJANGO_DEBUG'
+DEBUG = False
 
 ALLOWED_HOSTS = ['kalashnikovs-emailer.herokuapp.com']
 
