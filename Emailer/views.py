@@ -22,20 +22,20 @@ def index(request):
             message = form.cleaned_data['message']
             sender = os.environ.get('Email_user')
             to_whom = form.cleaned_data['to_whom']
-            seconds = float(form.cleaned_data['seconds'])
+            seconds = form.cleaned_data['seconds']
 
             recipients = []
             if to_whom:
                 recipients.append(to_whom)
 
-            t = threading.Timer(float(seconds), function=send_mail, args=(subject, message, sender, recipients))
+            t = threading.Timer(seconds, function=send_mail, args=(subject, message, sender, recipients))
 
             now = timezone.now()
 
             Email.objects.create(datetime_created=now,
                                  subject=subject,
                                  message=message,
-                                 seconds=now + timezone.timedelta(seconds=int(seconds)),
+                                 seconds=now + timezone.timedelta(seconds=seconds),
                                  to_whom=to_whom
                                  )
 
