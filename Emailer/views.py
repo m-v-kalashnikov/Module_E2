@@ -31,7 +31,7 @@ def index(request):
             # t = threading.Timer(seconds, function=send_mail, args=(subject, message, sender, recipients))
 
             now = timezone.now()
-            then = now.timezone.timedelta(seconds=seconds_)
+            then = now + timezone.timedelta(seconds=seconds_)
 
             Email.objects.create(datetime_created=now,
                                  subject=subject,
