@@ -4,7 +4,7 @@ from django import forms
 class EmailerForm(forms.Form):
     subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea)
-    seconds = forms.DurationField()
+    seconds = forms.DateTimeField()
     to_whom = forms.EmailField()
 
     subject.widget.attrs.update({'class': 'form-control'})
