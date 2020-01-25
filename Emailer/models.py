@@ -15,11 +15,11 @@ class Email(models.Model):
 
     def __str__(self):
         return self.subject
-
-    def save(self):
-        from datetime import timedelta
-        sec = timedelta(seconds=self.seconds)
-
-        if not self.id:
-            self.datetime_must_be_send = self.datetime_created + sec
-            super(Email, self).save()
+    #
+    # def save(self):
+    #     from datetime import timedelta
+    #     sec = timedelta(seconds=self.seconds)
+    #
+    #     if not self.id:
+    #         self.datetime_must_be_send = self.datetime_created + sec
+    #         super(Email, self).save()
